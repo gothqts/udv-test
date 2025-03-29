@@ -15,7 +15,8 @@
     display: flex;
     gap: 80px;
     flex-direction: column;
-    height: max-content;
+    height: auto;
+    max-height: 970px;
     width: 990px;
     border-radius: 64px;
     padding: 20px 50px 35px;

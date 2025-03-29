@@ -43,6 +43,11 @@ export const getStoredUsers = () => {
   )
   return storedUsers
 }
+export const getStoredUsersEmails = () =>{
+  const storedUsers = getStoredUsers()
+  return storedUsers.map((user) => user.email)
+
+}
 export const checkPassword = (user: IAuthValues) => {
   const storedUsers = getStoredUsers()
 

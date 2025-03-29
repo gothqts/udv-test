@@ -7,7 +7,7 @@ import React from 'react'
 import styles from './WindowForm.module.css'
 
 interface IWindowFormProps {
-  chatId: number
+  chatId: number | null
 }
 
 const WindowForm = ({ chatId }: IWindowFormProps) => {

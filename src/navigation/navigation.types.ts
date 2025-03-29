@@ -5,8 +5,3 @@ export interface IRoute {
     element: JSX.Element
 }
 
-export interface ILink {
-    path: string
-    name: string
-    icon?: JSX.Element
-}

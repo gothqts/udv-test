@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import authContext from '../../Auth.context.ts'
-import Input from '../../../../shared/Input'
+import Input from '../../../../shared/Inputs/Input'
 import styles from './CredentialsForm.module.css'
 
 interface ICredentialsFormProps {

@@ -21,3 +21,4 @@ export const fetchChats = () => {
     return error
   }
 }
+

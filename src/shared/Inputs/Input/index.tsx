@@ -1,5 +1,5 @@
 import { ChangeEvent, CSSProperties, PropsWithChildren, useEffect, useRef } from 'react'
-import cn from '../../utils/cn.ts'
+import cn from '../../../utils/cn.ts'
 
 export interface ITextInputProps {
   style?: CSSProperties

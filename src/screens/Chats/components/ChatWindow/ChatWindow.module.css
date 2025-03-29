@@ -1,4 +1,4 @@
-.wrapper{
+.wrapper {
     width: 100%;
     height: 100vh;
     display: flex;
@@ -6,10 +6,45 @@
     justify-content: space-between;
     overflow: hidden;
 }
-.messages_container{
+
+.messages_container {
     padding: 16px;
     display: flex;
     flex-direction: column;
     gap: 12px;
     overflow-y: auto;
+    flex: 1;
+}
+
+.message_wrapper {
+    display: flex;
+    max-width: 80%;
+}
+
+.own_message {
+    align-self: flex-end;
+    justify-content: flex-end;
+
+}
+
+.other_message {
+    align-self: flex-start;
+    justify-content: flex-start;
+}
+
+.plug {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.plug_text {
+    font-size: 50px;
+    color: #b3d4fc;
+    background: #1C2E4A;
+    border-radius: 30px;
+    padding: 5px 15px;
+    opacity: 0.8;
 }

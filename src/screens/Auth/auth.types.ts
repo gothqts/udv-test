@@ -9,7 +9,7 @@ export interface IMessage {
 }
 
 export interface IChatRoom {
-    id: number;
+    id: number | null;
     name: string;
     members: string[];
     messages: IMessage[];

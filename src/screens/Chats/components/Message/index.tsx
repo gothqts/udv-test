@@ -6,6 +6,7 @@ interface IMessageProps {
 }
 
 const Message = (props: IMessageProps) => {
+
   return (
     <div className={styles.message}>
       <div className={styles.email}>

@@ -1,0 +1,50 @@
+.wrapper {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.page_content {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+
+.left_bar {
+    width: 30%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    background: #2A3B56;
+    align-items: center;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #4A5B76 #2A3B56;;
+}
+
+.exit_btn {
+    border: none;
+    cursor: pointer;
+}
+.exit_icon_wrapper{
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.span{
+    font-size: 30px;
+}
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px;
+    align-items: center;
+    color: #BDC4D4;
+    font-size: 22px;
+}

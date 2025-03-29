@@ -1,0 +1,26 @@
+.wrapper {
+    width: 300px;
+    height: 100px;
+    border-radius: 30px;
+    background: #BDC4D4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.wrapper {
+    padding: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-radius: 8px;
+}
+
+.wrapper:hover {
+    background-color: #3F4E67;
+}
+
+.wrapper.active {
+    background-color: #3F4E67;
+    border-left: 10px solid #1C2E4A;
+}

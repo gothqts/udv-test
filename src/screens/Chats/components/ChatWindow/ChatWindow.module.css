@@ -3,35 +3,9 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     overflow: hidden;
+    justify-content: space-between;
 }
-
-.messages_container {
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    overflow-y: auto;
-    flex: 1;
-}
-
-.message_wrapper {
-    display: flex;
-    max-width: 80%;
-}
-
-.own_message {
-    align-self: flex-end;
-    justify-content: flex-end;
-
-}
-
-.other_message {
-    align-self: flex-start;
-    justify-content: flex-start;
-}
-
 .plug {
     display: flex;
     justify-content: center;
@@ -47,4 +21,11 @@
     border-radius: 30px;
     padding: 5px 15px;
     opacity: 0.8;
+}
+.messages_container_wrapper {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }

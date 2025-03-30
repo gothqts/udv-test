@@ -25,6 +25,7 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
+    padding: 20px 20px;
 }
 
 .btn {
@@ -34,8 +35,15 @@
     border-radius: 41px;
     background: #BDC4D4;
     border: none;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+    font-size: 18px;
 }
 
+.btn:hover {
+    box-shadow: 0 4px 10px rgba(189, 196, 212, 0.5);
+
+}
 .btn_wrapper {
     display: flex;
     align-items: center;
@@ -43,13 +51,15 @@
     width: 200px;
     height: 40px;
 }
+
 .span {
     cursor: pointer;
     text-decoration: underline;
 }
+
 .span_wrapper {
     padding-left: 15px;
     display: flex;
-    font-size: 14px;
-    color: #b3d4fc;
+    font-size: 18px;
+    color:#bdc4d4;
 }

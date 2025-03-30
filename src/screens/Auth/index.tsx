@@ -32,7 +32,7 @@ const Auth = () => {
         {authType === AuthTypeEnum.register && (
           <div>
             <div className={styles.span_wrapper}>
-              Already have an account?&nbsp;
+              Already have an account?
               <span className={styles.span} onClick={changeType}>
                 Sign in
               </span>

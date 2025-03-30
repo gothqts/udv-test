@@ -1,0 +1,30 @@
+.message_wrapper {
+    display: flex;
+}
+
+.messages_container {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+    overflow-y: auto;
+}
+.messages_container > :first-child {
+    margin-top: auto !important;
+}
+
+.own_message {
+    align-self: flex-end;
+    background-color: #007bff;
+    border-radius: 18px 18px 0 18px;
+    padding: 10px 15px;
+}
+
+.other_message {
+    align-self: flex-start;
+    background-color: #1C2E4A;
+    border-radius: 18px 18px 18px 0;
+    padding: 10px 15px;
+}
+

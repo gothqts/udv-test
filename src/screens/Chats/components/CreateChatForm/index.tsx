@@ -25,12 +25,15 @@ const CreateChatForm = (props: IChatFormProps) => {
       messages: context.values.messages,
       members: [...context.values.members, auth.email],
     }
-    if (context.values.name) {
-      createChat(newChat)
+    if (!context.values.name || newChat.members.length === 1) {
+      alert('Имя чата отсутсвует или вы не добавили участников')
+      return
+    }
+    if (createChat(newChat)) {
       setChats([...chats, newChat])
       props.onClose()
     } else {
-      alert('Имя чата не должно быть пустым')
+      alert('Чат с таким именем уже существует')
     }
   }
   return (

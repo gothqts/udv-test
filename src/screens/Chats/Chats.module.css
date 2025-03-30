@@ -4,6 +4,7 @@
     background: #3F4E67;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 .header{
     width: 100%;

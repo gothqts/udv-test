@@ -14,13 +14,13 @@ export const createChat = (newChat: IChatRoom): boolean => {
     }
   }
 }
-export const fetchChats = (): boolean => {
+export const fetchChats = () : IChatRoom[]=> {
   try {
     const storedChats = localStorage.getItem('chats')
     const parsedChats = storedChats ? JSON.parse(storedChats) : []
     return parsedChats
   } catch (error) {
     console.error('Error parsing chats from localStorage:', error)
-    return false
+    return []
   }
 }

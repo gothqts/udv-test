@@ -1,8 +1,8 @@
 import styles from './Chats.module.css'
 import { useEffect, useState } from 'react'
 import Modal from '../../shared/Modal'
-import { chatsAtom } from './Chats.atom.ts'
-import { useSetAtom } from 'jotai'
+import { chatsAtom, currentChatAtom } from './Chats.atom.ts'
+import { useAtomValue, useSetAtom } from 'jotai'
 import ChatWindow from './components/ChatWindow'
 import { fetchChats } from '../../services/chatActions/chatActions.ts'
 import { IChatRoom } from '../Auth/auth.types.ts'
@@ -12,12 +12,14 @@ import { getCurrentEmail } from '../../services/authActions/authActions.ts'
 import UserSelector from './components/UserSelector'
 import CreateChatContext from './createChat.context.ts'
 import { useChatCtrl } from './hooks/useChatCtrl.tsx'
+import ProfileIcon from '../../assets/userIcon.svg?react'
 
 const Chats = () => {
   const [isModalActive, setIsModalActive] = useState<boolean>(false)
   const setChats = useSetAtom(chatsAtom)
   const setAuthState = useSetAtom(authAtom)
   const chatCtrl = useChatCtrl()
+  const currentChat = useAtomValue(currentChatAtom)
 
   useEffect(() => {
     const email = getCurrentEmail()
@@ -43,6 +45,16 @@ const Chats = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
+        {currentChat ? (
+          <div className={styles.chat_info}>
+            <ProfileIcon />
+            <span className={styles.members_count}>
+              {' '}
+              members: {currentChat?.members.length}
+            </span>
+          </div>
+        ) : null}
+
         <button className={styles.create_btn} onClick={() => setIsModalActive(true)}>
           create chat
         </button>
@@ -58,7 +70,7 @@ const Chats = () => {
             value={{
               values: chatCtrl.chatValues,
               onChange: chatCtrl.handleChange,
-              onClick: chatCtrl.handleClick
+              onClick: chatCtrl.handleClick,
             }}
           >
             <UserSelector />

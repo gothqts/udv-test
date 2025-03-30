@@ -1,7 +1,9 @@
 import { IChatRoom } from '../../../Auth/auth.types.ts'
-import styles from './Chat.module.css'
+import styles from './chatCard.module.css'
 import { useSetAtom } from 'jotai'
-import {  currentChatIdAtom } from '../../Chats.atom.ts'
+import { currentChatIdAtom } from '../../Chats.atom.ts'
+import ChatIcon from '../../../../assets/chatIcon.svg?react'
+import ActiveChatIcon from '../../../../assets/activeChat.svg?react'
 
 interface IChatProps {
   chat: IChatRoom
@@ -16,9 +18,16 @@ const ChatCard = (props: IChatProps) => {
   }
 
   return (
-    <div className={`${styles.wrapper} ${props.isActive ? styles.active : ''}`}
-         onClick={handleClick}>
-      <h1 style={{ color: '#1C2E4A' }}>{props.chat.name}</h1>
-    </div>)
+    <div
+      className={`${styles.wrapper} ${props.isActive ? styles.active : ''}`}
+      onClick={handleClick}
+    >
+      <div className={props.isActive ? styles.chat_content_active : styles.chat_content}>
+        {props.isActive ? <ActiveChatIcon /> : <ChatIcon />}
+        <div className={styles.chat_name}>{props.chat.name}</div>
+      </div>
+    </div>
+  )
 }
+
 export default ChatCard

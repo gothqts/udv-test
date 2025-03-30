@@ -36,9 +36,12 @@ const Layout = () => {
           </div>
           <div className={styles.user_email}>{username}</div>
         </div>
-        {userChats.map((chat) => (
-          <ChatCard key={chat.id} chat={chat} isActive={currentChat?.id === chat.id} />
-        ))}
+        <div className={styles.chat_list}>
+          {userChats.map((chat) => (
+            <ChatCard key={chat.id} chat={chat} isActive={currentChat?.id === chat.id} />
+          ))}
+        </div>
+
       </div>
       <div className={styles.page_content}>
         <Suspense fallback={<LoaderText />}>

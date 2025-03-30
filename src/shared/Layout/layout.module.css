@@ -34,6 +34,28 @@
     box-sizing: border-box;
 }
 
+.create_chat_btn {
+    background: #BDC4D4;
+    border-radius: 20px;
+    width: 75px;
+    height: 69px;
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+    position: fixed;
+    left: 25%;
+    bottom: 30px;
+
+}
+.create_chat_btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    background: #D3DAEA;
+}
+
 .chat_list {
     overflow-y: auto;
 }

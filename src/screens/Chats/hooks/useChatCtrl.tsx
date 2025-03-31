@@ -3,7 +3,7 @@ import { IChatRoom } from '../../Auth/auth.types.ts'
 
 const generateEmptyChatValues = (): IChatRoom => ({
   name: '',
-  id: Date.now() + Math.floor(Math.random() * 1000),
+  id: null,
   messages: [],
   members: [],
 })
@@ -15,18 +15,21 @@ export const useChatCtrl = () => {
     setChatValues((prev) => ({ ...prev, [name]: value }))
   }
   const handleClick = (email: string) => {
-    setChatValues(prev => {
-      const newMembers = prev.members.includes(email)
-        ? prev.members.filter(member => member !== email)
-        : [...prev.members, email]
+    setChatValues((prev) => {
+      const membersSet = new Set(prev.members)
 
-      return { ...prev, members: newMembers }
+      if (membersSet.has(email)) {
+        membersSet.delete(email)
+      } else {
+        membersSet.add(email)
+      }
+      return { ...prev, members: Array.from(membersSet) }
     })
   }
 
   return {
     handleChange,
     chatValues,
-    handleClick
+    handleClick,
   }
 }

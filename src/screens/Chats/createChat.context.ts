@@ -3,13 +3,13 @@ import { IChatRoom } from '../Auth/auth.types.ts'
 
 interface IChatContext {
   values: IChatRoom
-  onChange: (value: any, name: string) => void
+  onChange: (value: string, name: string) => void
   onClick: (email: string) => void
 }
 
 export const generateChatValue = (): IChatRoom => ({
   name: '',
-  id: Date.now() + Math.floor(Math.random() * 1000),
+  id: null,
   messages: [],
   members: [],
 })

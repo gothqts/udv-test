@@ -1,9 +1,8 @@
 import {atom} from 'jotai'
 import {IUserProfile} from "./auth.types.ts";
-export const initialValue = {
+export const initialValue : IUserProfile= {
     email: '',
     password: '',
-    joinedChats: [],
     token: ''
 }
 export const authAtom = atom<IUserProfile>(initialValue)

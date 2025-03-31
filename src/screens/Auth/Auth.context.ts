@@ -1,19 +1,18 @@
-import {createContext} from "react";
-import {IAuthValues} from "./auth.types.ts";
+import { createContext } from 'react'
+import { IAuthValues } from './auth.types.ts'
 
 interface IAuthContext {
-    values: IAuthValues,
-    onChange: (value: any, name: string) => void
+  values: IAuthValues
+  onChange: (value: string, name: string) => void
 }
 
 export const generateInputValue = (): IAuthValues => ({
-    email: '',
-    password: ''
+  email: '',
+  password: '',
 })
 
-
 const AuthContext = createContext<IAuthContext>({
-    values: generateInputValue(), onChange: () => {
-    }
+  values: generateInputValue(),
+  onChange: () => {},
 })
 export default AuthContext

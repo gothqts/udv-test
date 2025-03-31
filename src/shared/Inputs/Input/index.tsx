@@ -3,7 +3,6 @@ import cn from '../../../utils/cn.ts'
 
 export interface ITextInputProps {
   style?: CSSProperties
-  inputstyle?: CSSProperties
   value: string
   name: string
   onChange: (val: string, name: string) => void
@@ -14,13 +13,9 @@ export interface ITextInputProps {
   maxLength?: number
   minLength?: number
   label?: string
-  autoComplete?: 'off' | 'on'
-  serverError?: string
   autofocus?: boolean
   onFocus?: () => void
-  onBlur?: () => void
-  error?: boolean
-  errorText?: string
+
   size?: string
 }
 
@@ -32,7 +27,6 @@ const TextInput = ({
   style,
   size,
   autofocus,
-  onBlur,
   type,
   ...props
 }: PropsWithChildren<ITextInputProps>) => {
@@ -57,8 +51,6 @@ const TextInput = ({
         onChange={handleChange}
         data-size={size}
         autoComplete='false'
-        style={props.inputstyle}
-        onBlur={onBlur}
         min={props.minLength ?? 0}
         {...props}
       />

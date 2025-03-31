@@ -23,8 +23,7 @@ const Layout = () => {
   const currentChat = useAtomValue(currentChatAtom)
   const [isModalActive, setIsModalActive] = useState<boolean>(false)
   const chatCtrl = useChatCtrl()
-  const userEmail = authState.email
-  const userChats = chats.filter((chat) => chat.members.includes(userEmail))
+  const userChats = chats.filter((chat) => chat.members.includes(authState.email))
 
   const handleClick = () => {
     sessionStorage.removeItem('authToken')
@@ -39,7 +38,6 @@ const Layout = () => {
     if (email) {
       setAuthState((prevState) => ({ ...prevState, email }))
     }
-
     const loadedChats: IChatRoom[] = fetchChats()
     setChats(loadedChats)
 
@@ -72,7 +70,9 @@ const Layout = () => {
           <button
             className={styles.create_chat_btn}
             onClick={() => setIsModalActive(true)}
-          ><PenIcon/></button>
+          >
+            <PenIcon />
+          </button>
         </div>
         {isModalActive && (
           <Modal

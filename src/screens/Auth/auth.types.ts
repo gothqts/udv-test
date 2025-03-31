@@ -3,7 +3,7 @@ export interface IAuthValues{
     password: string;
 }
 export interface IMessage {
-    id: number;
+    id: number | null;
     senderEmail: string;
     text: string;
 }

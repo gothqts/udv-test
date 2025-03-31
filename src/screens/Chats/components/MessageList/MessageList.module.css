@@ -10,6 +10,7 @@
     flex: 1;
     overflow-y: auto;
 }
+
 .messages_container > :first-child {
     margin-top: auto !important;
 }
@@ -28,3 +29,15 @@
     padding: 10px 15px;
 }
 
+.messages_container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.messages_container::-webkit-scrollbar-thumb {
+    background-color: #4A5B76;
+    border-radius: 4px;
+}
+
+.messages_container::-webkit-scrollbar-track {
+    background: #2A3B56;
+}

@@ -20,7 +20,7 @@ const Auth = () => {
 
   const renderContent = () => {
     return (
-      <CredentialsForm authType={authType} onChange={changeType}>
+      <CredentialsForm authType={authType}>
         {authType === AuthTypeEnum.login && (
           <div className={styles.span_wrapper}>
             New to chat?

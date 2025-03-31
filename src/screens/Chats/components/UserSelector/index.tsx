@@ -2,22 +2,20 @@ import styles from './UserSelector.module.css'
 import { useContext } from 'react'
 import createChatContext from '../../createChat.context.ts'
 import { storedUsers } from '../../Chats.atom.ts'
-import { useAtom, useAtomValue } from 'jotai'
+import { useAtomValue } from 'jotai'
 import { authAtom } from '../../../Auth/auth.atom.ts'
 
 const UserSelector = () => {
   const context = useContext(createChatContext)
-  const [allUsers] = useAtom(storedUsers)
+  const allUsers = useAtomValue(storedUsers)
   const authState = useAtomValue(authAtom)
-  const currentUserEmail = authState.email
-  const membersEmails = context.values.members
 
   const allEmails = allUsers
-    .map(user => user.email)
-    .filter(email => email !== currentUserEmail)
+    .map((user) => user.email)
+    .filter((email) => email !== authState.email)
 
   const availableEmails = allEmails.filter(
-    email => !membersEmails.includes(email)
+    (email) => !context.values.members.includes(email)
   )
 
   const handleEmailClick = (email: string) => {
@@ -30,7 +28,7 @@ const UserSelector = () => {
         <h3 className={styles.section_header}>Available Users:</h3>
         <div className={styles.users_list}>
           {availableEmails.length > 0 ? (
-            availableEmails.map(email => (
+            availableEmails.map((email) => (
               <div
                 key={email}
                 className={styles.user_item}
@@ -49,8 +47,8 @@ const UserSelector = () => {
       <div className={styles.section}>
         <h3 className={styles.section_header}>Members:</h3>
         <div className={styles.users_list}>
-          {membersEmails.length > 0 ? (
-            membersEmails.map(email => (
+          {context.values.members.length > 0 ? (
+            context.values.members.map((email) => (
               <div
                 key={email}
                 className={`${styles.user_item} ${styles.member}`}

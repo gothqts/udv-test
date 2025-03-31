@@ -18,6 +18,7 @@ export const registerNewUser = (user: IAuthValues): boolean => {
     return false
   }
 }
+
 export const login = (user: IAuthValues): boolean => {
   const isUserExist = checkUserExist(user)
   if (!isUserExist) {
@@ -29,25 +30,16 @@ export const login = (user: IAuthValues): boolean => {
 
 export const checkUserExist = (user: IAuthValues): boolean => {
   const storedUsers = getStoredUsers()
-  const isUserExist = storedUsers.some((storedUser) => storedUser.email === user.email)
-
-  if (isUserExist) {
-    return true
-  } else {
-    return false
-  }
+  return storedUsers.some((storedUser) => storedUser.email === user.email)
 }
+
 export const getStoredUsers = () => {
   const storedUsers: IAuthValues[] = JSON.parse(
     localStorage.getItem('storedUsers') || '[]'
   )
   return storedUsers
 }
-export const getStoredUsersEmails = () =>{
-  const storedUsers = getStoredUsers()
-  return storedUsers.map((user) => user.email)
 
-}
 export const checkPassword = (user: IAuthValues) => {
   const storedUsers = getStoredUsers()
 
@@ -56,13 +48,9 @@ export const checkPassword = (user: IAuthValues) => {
       storedUser.email === user.email && storedUser.password === user.password
   )
 }
-export const getCurrentEmail = (): string | null  => {
-  const currentUserStr = sessionStorage.getItem('currentUser');
-  if (!currentUserStr) return null;
-  try {
-    const currentUser = JSON.parse(currentUserStr);
-    return currentUser.username || null;
-  } catch (err) {
-    return null;
-  }
+export const getCurrentEmail = (): string | null => {
+  const currentUserStr = sessionStorage.getItem('currentUser')
+  if (!currentUserStr) return null
+  const currentUser = JSON.parse(currentUserStr)
+  return currentUser.username || null
 }

@@ -19,39 +19,34 @@ const useAuthCtrl = (props: IProps) => {
   const [authValues, setAuthValues] = useState(generateEmptyAuthValues())
   const setAuthState = useSetAtom(authAtom)
 
-  const handleChange = (value: any, name: string) => {
+  const handleChange = (value: string, name: string) => {
     setAuthValues((prev) => ({ ...prev, [name]: value }))
   }
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-    const User = {
-      email: authValues.email,
-      password: authValues.password,
-    }
+
     if (props.actionType === 'register') {
-      const isRegistrationSuccess = registerNewUser(User)
+      const isRegistrationSuccess = registerNewUser(authValues)
 
       if (isRegistrationSuccess) {
         const token = generateAndStoreUserData(authValues.email)
         setAuthState((prev) => ({
           ...prev,
-          email: authValues.email,
-          password: authValues.password,
-          token: token
+          ...authValues,
+          token: token,
         }))
-      }else{
+      } else {
         alert('Пользователь с таким именем уже существует')
       }
     } else {
-      const isLoginSuccess = login(User)
+      const isLoginSuccess = login(authValues)
       if (isLoginSuccess) {
         generateAndStoreUserData(authValues.email)
         setAuthState((prev) => ({
           ...prev,
-          email: authValues.email,
-          password: authValues.password,
+          ...authValues,
         }))
-      }else{
+      } else {
         alert('Неправильное имя пользователя или пароль')
       }
     }

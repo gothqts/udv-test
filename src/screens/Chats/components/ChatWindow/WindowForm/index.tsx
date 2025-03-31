@@ -1,10 +1,12 @@
-import { useState } from 'react'
-import { useAtom, useSetAtom } from 'jotai'
+import { useRef, useState } from 'react'
+import { useAtomValue, useSetAtom } from 'jotai'
 import { chatsAtom, currentChatAtom } from '../../../Chats.atom.ts'
 import { authAtom } from '../../../../Auth/auth.atom.ts'
-import { IMessage } from '../../../../Auth/auth.types.ts'
+import { IChatRoom, IMessage, IUserProfile } from '../../../../Auth/auth.types.ts'
 import React from 'react'
 import styles from './WindowForm.module.css'
+import useAutosizeTextArea from '../../../hooks/useAutoRisize.ts'
+import SendIcon from '../../../../../assets/sendIcon.svg?react'
 
 interface IWindowFormProps {
   chatId: number | null
@@ -12,9 +14,11 @@ interface IWindowFormProps {
 
 const WindowForm = ({ chatId }: IWindowFormProps) => {
   const [message, setMessage] = useState<string>('')
-  const [chats] = useAtom(chatsAtom)
-  const [auth] = useAtom(authAtom)
+  const chats = useAtomValue<IChatRoom[]>(chatsAtom)
+  const auth = useAtomValue<IUserProfile>(authAtom)
   const setCurrentChat = useSetAtom(currentChatAtom)
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null)
+  useAutosizeTextArea(textareaRef.current, message)
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -46,14 +50,19 @@ const WindowForm = ({ chatId }: IWindowFormProps) => {
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
-      <div className={styles.input_wrapper}>
-        <input
-          className={styles.text_input}
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          placeholder='Type your message...'
-        />
-      </div>
+      <textarea
+        id='textArea'
+        className={styles.textarea_text}
+        value={message}
+        ref={textareaRef}
+        rows={1}
+        maxLength={500}
+        onChange={(e) => setMessage(e.target.value)}
+        placeholder='Type your message...'
+      />
+      <button className={styles.btn} type='submit'>
+        <SendIcon />
+      </button>
     </form>
   )
 }

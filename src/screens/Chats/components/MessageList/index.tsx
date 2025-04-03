@@ -1,5 +1,5 @@
 import { IMessage } from '../../../Auth/auth.types.ts'
-import styles from './MessageList.module.css'
+import styles from './messageList.module.css'
 import Message from '../Message'
 import { useAtomValue } from 'jotai/index'
 import { authAtom } from '../../../Auth/auth.atom.ts'
@@ -14,9 +14,7 @@ const MessageList = (props: IMessageListProps) => {
   const authState = useAtomValue(authAtom)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const style = (message: IMessage) => {
-    return message.senderEmail === authState.email
-      ? styles.own_message
-      : styles.other_message
+    return message.senderEmail === authState.email ? styles.own_message : styles.other_message
   }
 
   useEffect(() => {

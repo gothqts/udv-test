@@ -1,6 +1,6 @@
 import { PropsWithChildren, useContext } from 'react'
 import authContext from '../../Auth.context.ts'
-import Input from '../../../../shared/Inputs/Input'
+import Input from '../../../../shared/Inputs/TextInput'
 import styles from './CredentialsForm.module.css'
 
 interface ICredentialsFormProps {

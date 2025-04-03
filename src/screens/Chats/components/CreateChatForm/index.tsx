@@ -1,6 +1,6 @@
 import styles from './CreateChatForm.module.css'
-import Input from '../../../../shared/Inputs/Input'
-import { useContext } from 'react'
+import Input from '../../../../shared/Inputs/TextInput'
+import { FormEvent, useContext } from 'react'
 import createChatContext from '../../createChat.context.ts'
 import { useAtom, useAtomValue } from 'jotai'
 import { IChatRoom } from '../../../Auth/auth.types.ts'
@@ -17,7 +17,7 @@ const CreateChatForm = (props: IChatFormProps) => {
   const [chats, setChats] = useAtom<IChatRoom[]>(chatsAtom)
   const auth = useAtomValue(authAtom)
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const newChat: IChatRoom = {
       name: context.values.name,
@@ -39,13 +39,7 @@ const CreateChatForm = (props: IChatFormProps) => {
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
       <div className={styles.input_wrapper}>
-        <Input
-          className={styles.text_input}
-          placeholder='enter the chat name'
-          name='name'
-          value={context.values.name}
-          onChange={context.onChange}
-        />
+        <Input className={styles.text_input} placeholder='enter the chat name' name='name' value={context.values.name} onChange={context.onChange} />
       </div>
       <button className={styles.btn} type='submit'>
         create chat

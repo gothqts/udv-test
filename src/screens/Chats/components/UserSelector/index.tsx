@@ -10,13 +10,9 @@ const UserSelector = () => {
   const allUsers = useAtomValue(storedUsers)
   const authState = useAtomValue(authAtom)
 
-  const allEmails = allUsers
-    .map((user) => user.email)
-    .filter((email) => email !== authState.email)
+  const allEmails = allUsers.map((user) => user.email).filter((email) => email !== authState.email)
 
-  const availableEmails = allEmails.filter(
-    (email) => !context.values.members.includes(email)
-  )
+  const availableEmails = allEmails.filter((email) => !context.values.members.includes(email))
 
   const handleEmailClick = (email: string) => {
     context.onClick(email)
@@ -29,11 +25,7 @@ const UserSelector = () => {
         <div className={styles.users_list}>
           {availableEmails.length > 0 ? (
             availableEmails.map((email) => (
-              <div
-                key={email}
-                className={styles.user_item}
-                onClick={() => handleEmailClick(email)}
-              >
+              <div key={email} className={styles.user_item} onClick={() => handleEmailClick(email)}>
                 {email}
                 <span className={styles.add_icon}>+</span>
               </div>
@@ -49,11 +41,7 @@ const UserSelector = () => {
         <div className={styles.users_list}>
           {context.values.members.length > 0 ? (
             context.values.members.map((email) => (
-              <div
-                key={email}
-                className={`${styles.user_item} ${styles.member}`}
-                onClick={() => handleEmailClick(email)}
-              >
+              <div key={email} className={`${styles.user_item} ${styles.member}`} onClick={() => handleEmailClick(email)}>
                 {email}
                 <span className={styles.remove_icon}>×</span>
               </div>

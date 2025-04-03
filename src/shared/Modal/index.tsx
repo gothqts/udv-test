@@ -1,11 +1,4 @@
-import {
-  PropsWithChildren,
-  useEffect,
-  useState,
-  useRef,
-  useCallback,
-  MouseEventHandler,
-} from 'react'
+import { PropsWithChildren, useEffect, useState, useRef, useCallback, MouseEventHandler } from 'react'
 import { createContainer } from './Portal/createContainer'
 import Portal from './Portal/index'
 import styles from './Modal.module.css'
@@ -24,7 +17,7 @@ const Modal = ({ id, onClose, children, title }: PropsWithChildren<IModalProps>)
     (e) => {
       onClose(e)
     },
-    [onClose],
+    [onClose]
   )
 
   const modalWrapperRef = useRef<HTMLDivElement>(null)
@@ -40,11 +33,7 @@ const Modal = ({ id, onClose, children, title }: PropsWithChildren<IModalProps>)
         <div className={styles.content}>
           <div className={styles.modal_header}>
             <h1 className={styles.title}>{title}</h1>
-            <CloseIcon
-              type="button"
-              onClick={handleClose}
-              className={styles.close_icon}
-            />
+            <CloseIcon type='button' onClick={handleClose} className={styles.close_icon} />
           </div>
           {children}
         </div>

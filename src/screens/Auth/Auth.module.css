@@ -9,7 +9,7 @@
 
 .form_wrapper {
     width: 500px;
-    height: 350px;
+    height: max-content;
     background: #3F4E67;
     border-radius: 65px;
     display: flex;

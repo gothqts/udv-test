@@ -1,22 +1,19 @@
 import styles from './Chats.module.css'
-import { currentChatAtom } from './Chats.atom.ts'
+import { pickedChatAtom } from './Chats.atom.ts'
 import { useAtomValue } from 'jotai'
 import ChatWindow from './components/ChatWindow'
 import ProfileIcon from '../../assets/userIcon.svg?react'
-import { IChatRoom } from '../Auth/auth.types.ts'
 
 const Chats = () => {
-  const currentChat = useAtomValue<IChatRoom | null>(currentChatAtom)
+  const pickedChat = useAtomValue(pickedChatAtom)
 
   return (
     <div className={styles.wrapper}>
-      {currentChat ? (
+      {pickedChat ? (
         <div className={styles.header}>
           <div className={styles.chat_info}>
             <ProfileIcon />
-            <span className={styles.members_count}>
-              members: {currentChat?.members.length}
-            </span>
+            <span className={styles.members_count}>members: {pickedChat?.members?.length}</span>
           </div>
         </div>
       ) : null}

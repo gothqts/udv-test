@@ -1,16 +1,25 @@
-.message{
+.message {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    width: 100%;
-    height: auto;
     border-radius: 15px;
     color: white;
-    padding: 10px 10px;
-}
-.data{
+    padding: 5px 10px;
     font-size: 25px;
 }
-.email{
-    font-size: 18px;
+.images_wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
 }
+.email {
+    font-weight: bold;
+}
+
+.data {
+    word-break: break-word;
+}
+
+

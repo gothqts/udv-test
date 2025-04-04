@@ -6,8 +6,13 @@ export interface IMessage {
     id: number | null;
     senderEmail: string;
     text: string;
+    images?:Image[];
 }
-
+export interface Image {
+    name: string;
+    url: string;
+    type: string;
+}
 export interface IChatRoom {
     id: number | null;
     name: string;

@@ -13,16 +13,13 @@ const ChatWindow = () => {
 
   useEffect(() => {
     setChatState(loadedChat)
-    console.log(chatState)
   }, [])
 
   return (
     <div className={styles.wrapper}>
       {chatState ? (
         <>
-          <div className={styles.messages_container_wrapper}>
-            <MessageList messages={chatState?.messages} />
-          </div>
+          <MessageList messages={chatState?.messages} />
           <WindowForm chatId={chatState?.id} />
         </>
       ) : (

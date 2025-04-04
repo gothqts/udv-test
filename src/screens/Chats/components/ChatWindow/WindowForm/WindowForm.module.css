@@ -1,17 +1,26 @@
 .form {
     display: flex;
-    position: sticky;
     align-items: center;
     outline: none;
     border: none;
-    padding: 0 130px;
+    padding: 0 16px;
     gap: 15px;
+    position: relative;
+}
+
+.textarea_container {
+    position: relative;
+    width: 100%;
+    background: #BDC4D4;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
 }
 
 .textarea_text {
     width: 100%;
-    background: #BDC4D4;
-    padding: 24px;
+    background: transparent;
+    padding: 24px 50px 24px 24px;
     outline: none;
     color: #2a3b56;
     font-size: 20px;
@@ -19,10 +28,48 @@
     resize: none;
     max-height: 230px;
     border-radius: 20px;
-
 }
 
-.btn{
+.emoji_button {
+    position: absolute;
+    right: 15px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1;
+}
+
+.emoji_button svg {
+    width: 30px;
+    height: 30px;
+}
+
+.emoji_picker_wrapper {
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    width: 400px;
+    max-height: 200px;
+}
+.zip_icon{
+    position: absolute;
+    bottom: 100%;
+    right: 20px;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    width: 400px;
+    max-height: 200px;
+}
+.btn {
     padding: 18px;
     background: #BDC4D4;
     border-radius: 20px;

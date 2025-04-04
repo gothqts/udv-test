@@ -1,14 +1,14 @@
-.message_wrapper {
-    display: flex;
-}
-
 .messages_container {
     padding: 16px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    flex: 1;
+    gap: 30px;
     overflow-y: auto;
+}
+
+.message_wrapper {
+    display: flex;
+    max-width: 50%;
 }
 
 .messages_container > :first-child {

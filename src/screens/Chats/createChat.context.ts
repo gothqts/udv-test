@@ -4,7 +4,7 @@ import { IChatRoom } from '../Auth/auth.types.ts'
 interface IChatContext {
   values: IChatRoom
   onChange: (value: string, name: string) => void
-  onClick: (email: string) => void
+  onClick: (email:string) => void
 }
 
 export const generateChatValue = (): IChatRoom => ({

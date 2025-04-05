@@ -1,4 +1,4 @@
-import styles from './CreateChatForm.module.css'
+import styles from './createChatForm.module.css'
 import Input from '../../../../shared/Inputs/TextInput'
 import { FormEvent, useContext } from 'react'
 import createChatContext from '../../createChat.context.ts'

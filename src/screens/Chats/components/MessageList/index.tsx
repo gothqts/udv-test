@@ -14,7 +14,9 @@ const MessageList = (props: IMessageListProps) => {
   const authState = useAtomValue(authAtom)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const style = (message: IMessage) => {
-    return message.senderEmail === authState.email ? styles.own_message : styles.other_message
+    return message.senderEmail === authState.email
+      ? styles.own_message
+      : styles.other_message
   }
 
   useEffect(() => {

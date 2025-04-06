@@ -22,12 +22,12 @@ export interface ITextInputProps extends OmittedInputProps {
 
 const TextInput = ({
   onChange,
-  value,
   children,
   className,
   style,
   size,
   autoFocus,
+  value,
   ...props
 }: PropsWithChildren<ITextInputProps>) => {
   const { type = 'text', name } = props

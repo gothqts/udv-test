@@ -11,7 +11,6 @@ const WindowForm = () => {
   const [showEmojiPicker, setShowEmojiPicker] = useState<boolean>(false)
   const pickerRef = useRef<HTMLDivElement>(null)
   const context = useContext(messageContext)
-
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (pickerRef.current && !pickerRef.current.contains(event.target as Node)) {

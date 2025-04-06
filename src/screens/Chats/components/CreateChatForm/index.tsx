@@ -38,9 +38,14 @@ const CreateChatForm = (props: IChatFormProps) => {
   }
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
-      <div className={styles.input_wrapper}>
-        <Input className={styles.text_input} placeholder='enter the chat name' name='name' value={context.values.name} onChange={context.onChange} />
-      </div>
+      <Input
+        style={{width:'35%'}}
+        className={styles.input}
+        placeholder='enter the chat name'
+        name='name'
+        value={context.values.name}
+        onChange={context.onChange}
+      />
       <button className={styles.btn} type='submit'>
         create chat
       </button>

@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useState } from 'react'
+import { Suspense, useContext, useEffect, useState } from 'react'
 import LoaderText from '../Loader/LoaderText/index.tsx'
 import styles from './layout.module.css'
 import { Outlet } from 'react-router'
@@ -16,8 +16,10 @@ import CreateChatContext from '../../screens/Chats/createChat.context.ts'
 import UserSelector from '../../screens/Chats/components/UserSelector'
 import CreateChatForm from '../../screens/Chats/components/CreateChatForm'
 import PenIcon from '../../assets/pen.svg?react'
+import { AdaptiveContext } from '../Adaptive'
 
 const Layout = () => {
+  const adaptive = useContext(AdaptiveContext)
   const [authState, setAuthState] = useAtom(authAtom)
   const [chats, setChats] = useAtom(chatsAtom)
   const [currentChat, setCurrentChat] = useAtom(pickedChatAtom)
@@ -53,10 +55,10 @@ const Layout = () => {
       if (e.key === 'chats') {
         const updatedChats: IChatRoom[] = fetchChats()
         setChats(updatedChats)
-        const chatFromSS = getCurrentChat()
+        const chatFromStorage = getCurrentChat()
 
-        if (chatFromSS) {
-          const updatedChat = updatedChats.find((chat) => chat.id === chatFromSS.id)
+        if (chatFromStorage) {
+          const updatedChat = updatedChats.find((chat) => chat.id === chatFromStorage.id)
 
           if (updatedChat) {
             setCurrentChat(updatedChat)
@@ -66,7 +68,6 @@ const Layout = () => {
             sessionStorage.removeItem('currentChat')
           }
         }
-        console.log('Отработало сторедж')
       }
     }
     window.addEventListener('storage', handleStorageChange)
@@ -77,9 +78,9 @@ const Layout = () => {
   }, [])
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} data-size={adaptive?.nameSize}>
       <div className={styles.left_bar}>
-        <div className={styles.header}>
+        <div className={styles.header} data-size={adaptive?.nameSize}>
           <div className={styles.exit_icon_wrapper}>
             <ExitIcon type='button' onClick={handleClick} />
           </div>
@@ -95,10 +96,11 @@ const Layout = () => {
             />
           ))}
           <button
+            data-size={adaptive?.nameSize}
             className={styles.create_chat_btn}
             onClick={() => setIsModalActive(true)}
           >
-            <PenIcon />
+            <PenIcon data-size={adaptive?.nameSize} />
           </button>
         </div>
         {isModalActive && (

@@ -7,6 +7,7 @@
 }
 
 .header {
+    height:5vh;
     width: 100%;
     padding: 8px 0;
     background: #2A3B56;
@@ -24,5 +25,5 @@
 
 .members_count {
     font-size: 36px;
-    color: #BDC4D4
+    color: #BDC4D4;
 }

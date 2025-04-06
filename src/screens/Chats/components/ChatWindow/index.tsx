@@ -5,15 +5,17 @@ import styles from './chatWindow.module.css'
 import MessageList from '../MessageList'
 import { pickedChatAtom } from '../../Chats.atom.ts'
 import { useLoaderData } from 'react-router'
-import { useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import MessageContext from './message.context.ts'
 import { useMessageCtrl } from './hooks/useMessageCtrl.ts'
 import SendIcon from '../../../../assets/sendIcon.svg?react'
+import { AdaptiveContext } from '../../../../shared/Adaptive'
 
 const ChatWindow = () => {
   const [chatState, setChatState] = useAtom<IChatRoom | null>(pickedChatAtom)
   const loadedChat: IChatRoom = useLoaderData()
   const ctrl = useMessageCtrl()
+  const adaptive = useContext(AdaptiveContext)
 
   useEffect(() => {
     setChatState(loadedChat)
@@ -33,7 +35,7 @@ const ChatWindow = () => {
           >
             <form onSubmit={ctrl.handleSubmit} className={styles.form}>
               <WindowForm />
-              <button type='submit' className={styles.btn}>
+              <button type='submit' className={styles.btn} data-size={adaptive?.nameSize}>
                 <SendIcon />
               </button>
             </form>

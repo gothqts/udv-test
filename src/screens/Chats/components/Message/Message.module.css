@@ -1,10 +1,21 @@
 .message {
     display: flex;
     flex-direction: column;
-    gap: 10px;
     border-radius: 15px;
     color: white;
     padding: 5px 10px;
+}
+
+.message[data-size='medium'] {
+    font-size: 15px;
+    gap: 5px;
+}
+.message[data-size='large'] {
+    font-size: 20px;
+    gap: 10px;
+}
+.message[data-size='extraLarge'] {
+    gap: 10px;
     font-size: 25px;
 }
 .images_wrapper{

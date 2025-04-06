@@ -3,6 +3,8 @@ import styles from './Message.module.css'
 import cn from '../../../../utils/cn.ts'
 import { getColorByEmail } from '../../../../utils/getColorByEmail.ts'
 import Img from './Img'
+import { useContext } from 'react'
+import { AdaptiveContext } from '../../../../shared/Adaptive'
 
 interface IMessageProps {
   message: IMessage
@@ -10,9 +12,10 @@ interface IMessageProps {
 }
 
 const Message = (props: IMessageProps) => {
+  const adaptive = useContext(AdaptiveContext)
   const emailColor = getColorByEmail(props.message.senderEmail)
   return (
-    <div className={cn(styles.message, props.className)}>
+    <div className={cn(styles.message, props.className)} data-size={adaptive?.nameSize}>
       <div className={styles.email} style={{ color: emailColor }}>
         {props.message.senderEmail}
       </div>

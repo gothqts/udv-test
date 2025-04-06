@@ -20,6 +20,7 @@
 }
 
 .header {
+    height: 5vh;
     width: 100%;
     display: flex;
     gap: 16px;
@@ -32,6 +33,15 @@
     top: 0;
     background: #2A3B56;
     box-sizing: border-box;
+
+}
+
+.header[data-size='medium'] {
+    font-size: 13px;
+}
+
+.header[data-size='large'] {
+    font-size: 17px;
 }
 
 .create_chat_btn {
@@ -46,10 +56,25 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     z-index: 2;
     position: fixed;
-    left: 25%;
+    left: calc(23vw - 40px);
     bottom: 30px;
-
 }
+
+.create_chat_btn[data-size='medium'] {
+    width: 55px;
+    height: 55px;
+    bottom: 30px;
+}
+
+.create_chat_btn[data-size='medium'] svg {
+    width: 25px;
+    height: 25px;
+}
+
+.create_chat_btn[data-size='large'] {
+    bottom: 30px;
+}
+
 .create_chat_btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -82,4 +107,7 @@
 
 .user_email {
     text-decoration: underline;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

@@ -1,14 +1,13 @@
 .textarea{
     border: none;
     outline: none;
-    font-size: 20px;
+    height: 100%;
 }
 .textarea_wrapper {
-    position: relative;
     width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
-textarea::placeholder {
-    font-size: 20px;
-}
+

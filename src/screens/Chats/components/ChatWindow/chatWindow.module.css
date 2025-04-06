@@ -19,12 +19,16 @@
     position: relative;
 }
 
+
 .btn {
     background: #BDC4D4;
     border-radius: 20px;
     border: none;
     padding: 18px;
     cursor: pointer;
+}
+.btn[data-size='medium'] {
+    padding: 10px;
 }
 
 .plug {
